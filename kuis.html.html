@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penegakan Hukum yang Berkeadilan - Portal Edukasi & Kuis Interaktif</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 45%, #fef3c7 100%);
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        /* Animasi Hujan Konfeti & Emoji Skor Sempurna */
+        @keyframes fallDown {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.8);
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+        .celebration-particle {
+            position: fixed;
+            top: -50px;
+            z-index: 9999;
+            pointer-events: none;
+            user-select: none;
+            animation: fallDown linear forwards;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #eef2ff; }
+        ::-webkit-scrollbar-thumb { background: #818cf8; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative">
+
+    <!-- Dekorasi Latar Belakang Bertema Hukum -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-[0.04]">
+        <svg class="absolute -top-10 -right-10 w-96 h-96 text-indigo-950" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91c4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18l6 2.25v4.66c0 4.02-2.67 7.77-6 8.83c-3.33-1.06-6-4.81-6-8.83V6.43l6-2.25z"/>
+        </svg>
+        <svg class="absolute bottom-10 -left-12 w-80 h-80 text-amber-900" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3c-1.1 0-2 .9-2 2H4v2h1.2l-2.7 6.3c-.3.7.2 1.7 1 1.7h5c.8 0 1.3-1 1-1.7L6.8 7H10v11H6v2h12v-2h-4V7h3.2l-2.7 6.3c-.3.7.2 1.7 1 1.7h5c.8 0 1.3-1 1-1.7L18.8 7H20V5h-6c0-1.1-.9-2-2-2z"/>
+        </svg>
+    </div>
+
+    <!-- ==========================================
+         HEADER & NAVIGASI UTAMA
+         ========================================== -->
+    <header class="bg-gradient-to-r from-indigo-950 via-blue-900 to-indigo-900 text-white shadow-xl sticky top-0 z-40 border-b border-indigo-700/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Brand & Ikon Hukum -->
+            <div class="flex items-center gap-3.5">
+                <div class="relative bg-gradient-to-br from-amber-400 to-orange-500 text-indigo-950 p-3 rounded-2xl shadow-lg shadow-amber-500/20 animate-float">
+                    <!-- Custom SVG Timbangan Keadilan -->
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3v18"/>
+                        <path d="M5 7h14"/>
+                        <path d="M5 7l-3 7h6l-3-7z"/>
+                        <path d="M19 7l-3 7h6l-3-7z"/>
+                        <path d="M8 21h8"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                            Pendidikan Kewarganegaraan
+                        </span>
+                    </div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent">
+                        Penegakan Hukum Berkeadilan
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Navigasi Tab & Pengaturan Email -->
+            <div class="flex flex-wrap items-center justify-center gap-2 w-full md:w-auto">
+                <nav class="flex bg-indigo-950/80 p-1.5 rounded-2xl border border-indigo-700/60 shadow-inner">
+                    <button id="tab-materi" onclick="switchTab('materi')" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-indigo-950 shadow-md cursor-pointer">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <span>Materi</span>
+                    </button>
+                    <button id="tab-kuis" onclick="switchTab('kuis')" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 text-indigo-200 hover:text-white cursor-pointer">
+                        <i class="fa-solid fa-gavel"></i>
+                        <span>Kuis (10 Soal)</span>
+                    </button>
+                    <button id="tab-log" onclick="switchTab('log')" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 text-indigo-200 hover:text-white cursor-pointer">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span>Rekap Peserta</span>
+                        <span id="log-count-badge" class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">0</span>
+                    </button>
+                </nav>
+
+                <!-- Tombol Setting Email Pembuat Project -->
+                <button onclick="openEmailModal()" title="Atur Email Penerima Laporan" class="bg-indigo-800/80 hover:bg-indigo-700 text-amber-300 border border-indigo-600 p-2.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 text-xs font-semibold">
+                    <i class="fa-solid fa-envelope-circle-check text-base"></i>
+                    <span class="hidden sm:inline">Email Host</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MODAL PENGATURAN EMAIL TUJUAN (HOST)
+         ========================================== -->
+    <div id="email-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-indigo-100 fade-in space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
+                        <i class="fa-solid fa-envelope-open-text text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-base">Pengaturan Email Penerima</h3>
+                        <p class="text-xs text-slate-500">Laporan hasil kuis akan diarahkan ke email ini</p>
+                    </div>
+                </div>
+                <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-700 p-1 cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-700">Alamat Email Pembuat Kuis / Presenter:</label>
+                <input type="email" id="host-email-input" placeholder="contoh: kelompok.hukum@kampus.ac.id" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 outline-none text-sm">
+                <p class="text-[11px] text-slate-500">
+                    <i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>
+                    Email ini tersimpan otomatis di perangkat dan muncul pada tombol kirim laporan saat teman-teman selesai mengerjakan kuis.
+                </p>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeEmailModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 cursor-pointer">Batal</button>
+                <button onclick="saveHostEmail()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white shadow cursor-pointer">
+                    Simpan Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL PIN ADMIN & KONFIRMASI HAPUS DATA
+         ========================================== -->
+    <div id="admin-pin-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-indigo-100 fade-in space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                        <i class="fa-solid fa-key text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-base">Buka Akses Admin Host</h3>
+                        <p class="text-xs text-slate-500">Masukkan PIN untuk kelola & hapus data</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminPinModal()" class="text-slate-400 hover:text-slate-700 p-1 cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-700">PIN Admin (Default: <span class="text-indigo-600 font-mono">1234</span>):</label>
+                <input type="password" id="admin-pin-input" maxlength="8" placeholder="Masukkan PIN 1234..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 outline-none text-sm font-mono tracking-widest text-center">
+                <p id="admin-pin-error" class="hidden text-xs text-rose-600 font-bold text-center">
+                    <i class="fa-solid fa-circle-exclamation mr-1"></i> PIN salah! Gunakan PIN default: 1234
+                </p>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-1">
+                <button onclick="closeAdminPinModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 cursor-pointer">Batal</button>
+                <button onclick="verifyAdminPin()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-indigo-950 shadow cursor-pointer">
+                    Aktifkan Mode Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus Kustom (Aman di iFrame) -->
+    <div id="delete-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-rose-100 fade-in space-y-4 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+            <div class="space-y-1.5">
+                <h3 id="delete-modal-title" class="font-extrabold text-slate-900 text-lg">Konfirmasi Hapus</h3>
+                <p id="delete-modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Yakin ingin menghapus data ini?
+                </p>
+            </div>
+            <div class="flex items-center justify-center gap-2.5 pt-2">
+                <button onclick="closeDeleteModal()" class="flex-1 px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer">
+                    Batal
+                </button>
+                <button id="confirm-delete-btn" class="flex-1 px-4 py-2.5 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white shadow cursor-pointer">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         KONTEN UTAMA
+         ========================================== -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 relative z-10">
+
+        <!-- ==========================================
+             TAB 1: MATERI PEMBELAJARAN
+             ========================================== -->
+        <section id="section-materi" class="fade-in space-y-6">
+            <!-- Hero Banner Colorful Bertema Hukum -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 text-white rounded-3xl p-6 sm:p-9 shadow-xl border border-indigo-700">
+                <div class="relative z-10 max-w-3xl space-y-3">
+                    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xs border border-white/20 px-3.5 py-1 rounded-full text-xs font-bold text-amber-300">
+                        <i class="fa-solid fa-landmark"></i>
+                        <span>Modul Inti Presentasi Kelompok</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+                        Mewujudkan <span class="text-amber-400">Penegakan Hukum</span> yang Berkeadilan di Indonesia
+                    </h2>
+                    <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">
+                        Pahami 5 pilar utama konsep negara hukum, teori tujuan hukum, sistem peradilan, hingga keadilan restoratif sebelum memulai tantangan kuis berbatas waktu <strong>10 menit</strong>.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('kuis')" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-indigo-950 font-extrabold px-6 py-3 rounded-2xl shadow-lg shadow-amber-500/25 transition-all flex items-center gap-2 text-sm cursor-pointer">
+                            <i class="fa-solid fa-gavel"></i>
+                            <span>Langsung ke Kuis Interaktif</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ilustrasi SVG Palu Sidang & Neraca di Kanan Banner -->
+                <div class="hidden lg:flex absolute right-8 bottom-4 opacity-20 pointer-events-none">
+                    <i class="fa-solid fa-scale-balanced text-[160px] text-amber-300"></i>
+                </div>
+            </div>
+
+            <!-- Grid 5 Kartu Materi Colorful -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Kartu 1: Negara Hukum -->
+                <div class="bg-white/90 backdrop-blur-xs rounded-3xl p-6 shadow-md border-t-4 border-indigo-600 hover:shadow-lg transition-all space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-indigo-100 text-indigo-700 font-extrabold text-xs px-3 py-1 rounded-full">Pilar 01</span>
+                        <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-landmark-dome"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900">Negara Hukum & Landasan Konstitusi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <strong>Pasal 1 Ayat (3) UUD 1945</strong> menegaskan Indonesia adalah negara hukum yang memadukan tradisi <em>Rechtsstaat</em> (hukum tertulis) dan <em>Rule of Law</em> (supremasi hukum & perlindungan HAM).
+                    </p>
+                    <div class="bg-indigo-50/80 p-4 rounded-2xl border border-indigo-100 text-xs sm:text-sm text-indigo-950 space-y-1.5">
+                        <div class="font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-indigo-600"></i>
+                            <span>Pasal 27 (1) & Pasal 28D (1) UUD 1945:</span>
+                        </div>
+                        <p class="text-slate-700">Menjamin asas <strong>Equality Before the Law</strong>: setiap warga negara memiliki kedudukan setara di hadapan hukum tanpa diskriminasi jabatan maupun status sosial.</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 2: Gustav Radbruch -->
+                <div class="bg-white/90 backdrop-blur-xs rounded-3xl p-6 shadow-md border-t-4 border-amber-500 hover:shadow-lg transition-all space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-100 text-amber-800 font-extrabold text-xs px-3 py-1 rounded-full">Pilar 02</span>
+                        <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-scale-unbalanced"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900">3 Nilai Dasar Hukum (Gustav Radbruch)</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Penegakan hukum ideal harus menyeimbangkan tiga nilai dasar yang sering berada dalam ketegangan:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+                        <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200">
+                            <div class="font-extrabold text-amber-800 mb-1">1. Keadilan</div>
+                            <p class="text-slate-700">Prioritas utama jika terjadi konflik tajam dengan aturan tertulis (<em>Radbruch Formula</em>).</p>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                            <div class="font-extrabold text-emerald-800 mb-1">2. Kemanfaatan</div>
+                            <p class="text-slate-700">Hukum hadir untuk mendatangkan ketertiban dan kebahagiaan masyarakat.</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-2xl border border-blue-200">
+                            <div class="font-extrabold text-blue-800 mb-1">3. Kepastian</div>
+                            <p class="text-slate-700">Aturan tertulis yang jelas, konsisten, dan tidak multitafsir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu 3: Lawrence M. Friedman -->
+                <div class="bg-white/90 backdrop-blur-xs rounded-3xl p-6 shadow-md border-t-4 border-purple-600 hover:shadow-lg transition-all space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-purple-100 text-purple-800 font-extrabold text-xs px-3 py-1 rounded-full">Pilar 03</span>
+                        <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900">Teori Sistem Hukum (Lawrence M. Friedman)</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Efektivitas penegakan hukum ditentukan oleh sinergi tiga subsistem utama:
+                    </p>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li class="bg-purple-50/70 p-3 rounded-xl border border-purple-100 flex items-center gap-3">
+                            <span class="font-extrabold text-purple-700 shrink-0">Struktur:</span>
+                            <span class="text-slate-700">Kelembagaan dan aparat pelaksana (Polisi, Jaksa, Hakim, Advokat, KPK).</span>
+                        </li>
+                        <li class="bg-purple-50/70 p-3 rounded-xl border border-purple-100 flex items-center gap-3">
+                            <span class="font-extrabold text-purple-700 shrink-0">Substansi:</span>
+                            <span class="text-slate-700">Produk norma, undang-undang, peraturan tertulis, dan yurisprudensi.</span>
+                        </li>
+                        <li class="bg-purple-50/70 p-3 rounded-xl border border-purple-100 flex items-center gap-3">
+                            <span class="font-extrabold text-purple-700 shrink-0">Budaya:</span>
+                            <span class="text-slate-700">Kesadaran, sikap, dan perilaku masyarakat terhadap hukum ("bahan bakar" hukum).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 4: Lembaga Penegak Hukum -->
+                <div class="bg-white/90 backdrop-blur-xs rounded-3xl p-6 shadow-md border-t-4 border-emerald-600 hover:shadow-lg transition-all space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-emerald-100 text-emerald-800 font-extrabold text-xs px-3 py-1 rounded-full">Pilar 04</span>
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900">Catur Wangsa & Lembaga Penegak Hukum</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <strong class="text-emerald-700 block mb-0.5"><i class="fa-solid fa-shield mr-1"></i> Kepolisian (Polri)</strong>
+                            <span class="text-slate-600">Menjaga kamtibmas serta melakukan penyelidikan & penyidikan pidana.</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <strong class="text-emerald-700 block mb-0.5"><i class="fa-solid fa-file-signature mr-1"></i> Kejaksaan RI</strong>
+                            <span class="text-slate-600">Pemegang asas <em>Dominus Litis</em> (penuntut umum & eksekutor putusan).</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <strong class="text-emerald-700 block mb-0.5"><i class="fa-solid fa-gavel mr-1"></i> Kehakiman (MA & MK)</strong>
+                            <span class="text-slate-600">MA mengadili perkara kasasi; MK menguji UU terhadap UUD 1945.</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <strong class="text-emerald-700 block mb-0.5"><i class="fa-solid fa-user-tie mr-1"></i> Advokat & KPK</strong>
+                            <span class="text-slate-600">Advokat mengawal <em>due process of law</em>; KPK memberantas korupsi.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 5 Full Width: Tantangan & Restorative Justice -->
+            <div class="bg-gradient-to-r from-rose-50 via-white to-amber-50 rounded-3xl p-6 shadow-md border border-rose-200 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 max-w-3xl">
+                    <div class="inline-flex items-center gap-2 bg-rose-100 text-rose-800 text-xs font-extrabold px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                        <span>Pilar 05: Paradigma Keadilan Modern</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900">Mengatasi Positivisme Kaku dengan <em>Restorative Justice</em></h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Kritik <em>"hukum tajam ke bawah, tumpul ke atas"</em> muncul ketika aparat terjebak pada legalisme kaku tanpa nurani. Melalui <strong>Keadilan Restoratif (<em>Restorative Justice</em>)</strong>, perkara tindak pidana ringan diselesaikan dengan melibatkan pelaku, korban, dan masyarakat untuk <strong>memulihkan keadaan semula</strong>, bukan sekadar pembalasan penjara.
+                    </p>
+                </div>
+                <button onclick="switchTab('kuis')" class="shrink-0 w-full md:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-extrabold px-6 py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2.5 cursor-pointer">
+                    <span>Mulai Tantangan Kuis</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 2: HALAMAN KUIS INTERAKTIF
+             ========================================== -->
+        <section id="section-kuis" class="hidden fade-in">
+
+            <!-- STEP 2A: LAYAR PENDAFTARAN PESERTA SEBELUM MULAI -->
+            <div id="quiz-start-screen" class="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-900 p-6 sm:p-8 text-white text-center relative">
+                    <div class="w-16 h-16 bg-amber-400 text-indigo-950 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg text-2xl">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold">Registrasi Peserta Kuis</h2>
+                    <p class="text-indigo-200 text-xs sm:text-sm mt-1">Isi identitas singkat Anda agar hasil kuis dapat terdata dengan akurat</p>
+                </div>
+
+                <form onsubmit="startQuiz(event)" class="p-6 sm:p-8 space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Lengkap <span class="text-rose-500">*</span></label>
+                            <input type="text" id="student-name" required placeholder="Masukkan nama lengkap..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">NIM / Kelas <span class="text-rose-500">*</span></label>
+                            <input type="text" id="student-nim" required placeholder="Contoh: 2401015 / Kelas A" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Status Pengerjaan:</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attemptType" value="Percobaan Pertama" checked class="peer sr-only">
+                                <div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 text-center text-xs sm:text-sm font-bold text-slate-700 peer-checked:text-indigo-900 transition-all">
+                                    <i class="fa-solid fa-flag-checkered mr-1 text-indigo-600"></i> Percobaan Pertama
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attemptType" value="Mengulang Kuis" class="peer sr-only">
+                                <div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-amber-500 peer-checked:bg-amber-50 text-center text-xs sm:text-sm font-bold text-slate-700 peer-checked:text-amber-900 transition-all">
+                                    <i class="fa-solid fa-rotate mr-1 text-amber-600"></i> Mengulang Kuis
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Kotak Aturan Main Ringkas -->
+                    <div class="bg-gradient-to-r from-indigo-50 to-amber-50 border border-indigo-100 rounded-2xl p-4 space-y-2 text-xs text-slate-700">
+                        <div class="font-extrabold text-indigo-950 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600"></i>
+                            <span>Aturan Main Kuis (10 Soal):</span>
+                        </div>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-1">
+                            <li><i class="fa-solid fa-stopwatch text-rose-600 mr-1.5"></i>Waktu maksimal: <strong>10 Menit</strong></li>
+                            <li><i class="fa-solid fa-check-circle text-emerald-600 mr-1.5"></i>Benar ke-1: <strong>+10 Poin</strong></li>
+                            <li><i class="fa-solid fa-lightbulb text-amber-600 mr-1.5"></i>Benar ke-2: <strong>+5 Poin</strong></li>
+                            <li><i class="fa-solid fa-ban text-slate-500 mr-1.5"></i>Benar ke-3 / Gagal: <strong>0 Poin</strong></li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-extrabold py-3.5 rounded-2xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer">
+                        <span>Mulai Kuis & Jalankan Timer 10 Menit</span>
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- STEP 2B: AREA SOAL AKTIF -->
+            <div id="quiz-active-screen" class="hidden space-y-5">
+                
+                <!-- Bar Status Atas: Peserta, Timer 10 Menit, Skor -->
+                <div class="bg-white rounded-2xl p-4 shadow-md border border-indigo-100 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-extrabold">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <div id="display-student-name" class="font-extrabold text-slate-900 text-sm">Nama Peserta</div>
+                            <div id="display-student-meta" class="text-xs text-slate-500">NIM • Status</div>
+                        </div>
+                    </div>
+
+                    <!-- Timer Mundur 10:00 -->
+                    <div id="timer-box" class="flex items-center gap-2 bg-indigo-950 text-amber-400 px-4 py-2 rounded-xl font-mono font-extrabold text-base sm:text-lg shadow-inner border border-indigo-800">
+                        <i class="fa-solid fa-stopwatch text-amber-400"></i>
+                        <span id="timer-display">10:00</span>
+                    </div>
+
+                    <!-- Skor Live -->
+                    <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-xl">
+                        <i class="fa-solid fa-star text-amber-500"></i>
+                        <span class="text-xs font-bold text-emerald-900">Skor:</span>
+                        <span id="current-score" class="text-base font-extrabold text-emerald-700">0</span>
+                    </div>
+                </div>
+
+                <!-- Kartu Soal Utama -->
+                <div class="bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden">
+                    <!-- Header Nomor Soal & Kesempatan -->
+                    <div class="bg-gradient-to-r from-indigo-900 to-blue-800 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-2.5">
+                            <span id="question-counter" class="bg-amber-400 text-indigo-950 font-extrabold px-3 py-1 rounded-xl text-xs sm:text-sm">
+                                Soal 1 / 10
+                            </span>
+                            <span id="question-topic" class="text-xs sm:text-sm text-indigo-200 font-semibold">
+                                Topik Hukum
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-xl text-xs font-bold">
+                            <span class="text-indigo-200">Percobaan:</span>
+                            <span id="attempt-badge" class="text-emerald-300">1 dari 3 (+10 Poin)</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-indigo-100 h-2">
+                        <div id="progress-bar" class="bg-gradient-to-r from-amber-400 to-orange-500 h-2 transition-all duration-300" style="width: 10%;"></div>
+                    </div>
+
+                    <!-- Isi Pertanyaan & Opsi -->
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <p id="question-text" class="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
+                            Memuat soal...
+                        </p>
+
+                        <!-- Alert Feedback / Petunjuk -->
+                        <div id="feedback-alert" class="hidden rounded-2xl p-4 text-xs sm:text-sm font-medium border flex items-start gap-3">
+                            <i id="feedback-icon" class="fa-solid mt-0.5 text-lg"></i>
+                            <div id="feedback-message" class="space-y-1"></div>
+                        </div>
+
+                        <!-- Pilihan Jawaban (Panjang Seimbang) -->
+                        <div id="options-container" class="grid grid-cols-1 gap-3">
+                            <!-- Di-render via JS -->
+                        </div>
+
+                        <!-- Pembahasan Ringkas -->
+                        <div id="explanation-box" class="hidden bg-indigo-50/80 border-l-4 border-indigo-600 rounded-r-2xl p-4 space-y-1.5 fade-in">
+                            <div class="font-extrabold text-indigo-950 text-xs sm:text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-scale-balanced text-indigo-600"></i>
+                                <span>Pembahasan Singkat:</span>
+                            </div>
+                            <p id="explanation-text" class="text-xs sm:text-sm text-slate-700 leading-relaxed"></p>
+                        </div>
+
+                        <!-- Navigasi Bawah -->
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] text-slate-400 font-medium">
+                                <i class="fa-solid fa-shield-halved mr-1"></i> Pilih jawaban yang paling tepat
+                            </span>
+                            <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 text-xs sm:text-sm cursor-pointer">
+                                <span id="next-btn-text">Soal Berikutnya</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2C: LAYAR HASIL AKHIR, KEJUTAN SKOR 100, NOTE APRESIASI & KIRIM EMAIL -->
+            <div id="result-container" class="hidden max-w-3xl mx-auto space-y-6 fade-in">
+                
+                <!-- Kartu Utama Hasil -->
+                <div class="bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden text-center">
+                    <div id="result-header-banner" class="bg-gradient-to-r from-indigo-900 via-blue-800 to-purple-900 p-8 text-white relative">
+                        <div id="result-icon-wrapper" class="w-20 h-20 bg-amber-400 text-indigo-950 rounded-3xl flex items-center justify-center mx-auto text-4xl shadow-xl mb-4">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <span id="result-predicate-badge" class="inline-block px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-white/20 text-amber-300 mb-2">
+                            Evaluasi Selesai
+                        </span>
+                        <h2 id="result-title" class="text-2xl sm:text-3xl font-extrabold">Hasil Kuis Anda</h2>
+                        <p id="result-student-info" class="text-indigo-200 text-xs sm:text-sm mt-1">Peserta • NIM</p>
+                    </div>
+
+                    <div class="p-6 sm:p-8 space-y-6">
+                        <!-- Banner Khusus Jika Skor Sempurna 100 -->
+                        <div id="perfect-score-banner" class="hidden bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-indigo-950 p-4 rounded-2xl font-extrabold text-sm sm:text-base shadow-md border-2 border-amber-500 animate-bounce">
+                            🎉🏆 LUAR BIASA! SKOR SEMPURNA 100! ANDA SANGAT MENGUASAI MATERI HUKUM! ⚖️✨
+                        </div>
+
+                        <!-- Box Skor & Waktu -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="bg-indigo-950 text-white p-4 rounded-2xl col-span-2 sm:col-span-1 flex flex-col justify-center">
+                                <span class="text-[11px] uppercase tracking-wider text-indigo-300">Total Skor</span>
+                                <span class="text-3xl font-extrabold text-amber-400"><span id="final-score">0</span><span class="text-sm text-slate-400">/100</span></span>
+                            </div>
+                            <div class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-2xl">
+                                <div class="text-xl font-extrabold text-emerald-700" id="stat-first-try">0</div>
+                                <div class="text-[11px] font-bold text-emerald-900">Benar ke-1 (+10)</div>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-2xl">
+                                <div class="text-xl font-extrabold text-amber-700" id="stat-second-try">0</div>
+                                <div class="text-[11px] font-bold text-amber-900">Benar ke-2 (+5)</div>
+                            </div>
+                            <div class="bg-slate-100 border border-slate-200 p-3.5 rounded-2xl">
+                                <div class="text-xl font-extrabold text-slate-700" id="stat-time-used">00:00</div>
+                                <div class="text-[11px] font-bold text-slate-600">Durasi Kerja</div>
+                            </div>
+                        </div>
+
+                        <!-- NOTE KHUSUS APRESIASI (SESUAI PERMINTAAN) -->
+                        <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-amber-50 border-2 border-indigo-200 rounded-2xl p-5 relative overflow-hidden">
+                            <div class="flex flex-col items-center gap-2">
+                                <span class="text-2xl">⚖️🤝✨</span>
+                                <p class="text-base sm:text-lg font-extrabold text-indigo-950">
+                                    "Terimakasih karna telah menyimak dan berkontribusi di project kami"
+                                </p>
+                                <span class="text-xs text-slate-500 font-medium">— Tim Penyaji Materi Penegakan Hukum yang Berkeadilan</span>
+                            </div>
+                        </div>
+
+                        <!-- FITUR KIRIM DATA KE EMAIL PEMBUAT KUIS -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div>
+                                    <h4 class="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                                        <i class="fa-solid fa-paper-plane text-indigo-600"></i>
+                                        <span>Kirim Bukti Pengerjaan ke Email Pembuat Kuis</span>
+                                    </h4>
+                                    <p class="text-xs text-slate-500">
+                                        Tujuan Email: <strong id="display-target-email" class="text-indigo-700">Belum diatur (klik Ubah)</strong>
+                                    </p>
+                                </div>
+                                <button onclick="openEmailModal()" class="text-xs font-bold text-indigo-600 hover:underline self-start sm:self-center cursor-pointer">
+                                    <i class="fa-solid fa-pen mr-1"></i>Ubah Email
+                                </button>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+                                <button onclick="sendResultViaEmail()" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-3 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-xs sm:text-sm cursor-pointer">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>Kirim Hasil via Email Sekarang</span>
+                                </button>
+                                <button onclick="copyResultReport()" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-xs sm:text-sm cursor-pointer">
+                                    <i class="fa-solid fa-copy text-indigo-600"></i>
+                                    <span id="copy-btn-label">Salin Laporan</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tombol Ulangi / Kembali ke Materi -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                            <button onclick="switchTab('materi')" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-book-open"></i>
+                                <span>Baca Materi</span>
+                            </button>
+                            <button onclick="switchTab('log')" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Lihat Rekap Peserta</span>
+                            </button>
+                            <button onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-indigo-950 font-extrabold text-xs sm:text-sm transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span>Ulangi Kuis</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             TAB 3: REKAP DATA PESERTA (TERDATA OTOMATIS)
+             ========================================== -->
+        <section id="section-log" class="hidden fade-in space-y-5">
+            <div class="bg-white rounded-3xl shadow-lg border border-indigo-100 p-6 sm:p-8 space-y-5">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-clipboard-check text-indigo-600"></i>
+                                <span>Rekap Peserta yang Telah Mengerjakan</span>
+                            </h2>
+                            <span id="admin-status-badge" class="bg-slate-100 text-slate-600 border border-slate-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                                <i class="fa-solid fa-lock mr-1"></i> Mode Lihat
+                            </span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                            Data tersimpan otomatis. Aktifkan <strong>Mode Admin (PIN: 1234)</strong> untuk menghapus data uji coba atau peserta tertentu.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- Tombol Toggle Kunci / Mode Admin -->
+                        <button id="admin-toggle-btn" onclick="toggleAdminMode()" class="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-bold px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Buka Akses Hapus (Admin)</span>
+                        </button>
+
+                        <!-- Tombol Kirim Semua Rekap ke Email -->
+                        <button onclick="exportAllLogsToEmail()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow cursor-pointer">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Kirim Rekap ke Email</span>
+                        </button>
+
+                        <!-- Tombol Hapus Semua Rekap (Muncul saat Mode Admin aktif) -->
+                        <button id="delete-all-btn" onclick="promptDeleteAllLogs()" class="hidden bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 shadow transition-all cursor-pointer">
+                            <i class="fa-solid fa-trash-can"></i>
+                            <span>Hapus Semua Rekap</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabel Log Peserta -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-indigo-50 text-indigo-950 text-xs font-extrabold uppercase">
+                                <th class="p-3.5 rounded-tl-xl">No</th>
+                                <th class="p-3.5">Nama & NIM</th>
+                                <th class="p-3.5">Status</th>
+                                <th class="p-3.5">Skor</th>
+                                <th class="p-3.5">Durasi</th>
+                                <th class="p-3.5">Waktu Selesai</th>
+                                <th id="log-action-header" class="hidden p-3.5 rounded-tr-xl text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-table-body" class="text-xs sm:text-sm divide-y divide-slate-100">
+                            <!-- Di-render via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 backdrop-blur-xs border-t border-indigo-100 py-5 mt-10 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+            Portal Edukasi Hukum &bull; Materi Presentasi: <strong class="text-indigo-900">Penegakan Hukum yang Berkeadilan</strong>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         LOGIKA JAVASCRIPT
+         ========================================== -->
+    <script>
+        // 10 SOAL RINGKAS & PADAT DENGAN PANJANG OPSI JAWABAN SEIMBANG
+        const quizQuestions = [
+            {
+                topic: "Filsafat Hukum (Gustav Radbruch)",
+                question: "Jika terjadi pertentangan tajam antara kepastian hukum tertulis dan rasa keadilan masyarakat, sikap hakim menurut Radbruch Formula adalah...",
+                options: [
+                    "Memenangkan keadilan substantif di atas aturan tertulis",
+                    "Memenangkan kepastian teks undang-undang secara mutlak",
+                    "Menyerahkan keputusan hukum kepada pihak penggugat",
+                    "Membatalkan seluruh pasal pidana yang sedang berlaku"
+                ],
+                correctIndex: 0,
+                hint: "Menurut Gustav Radbruch, keadilan menempati hierarki tertinggi jika terjadi konflik ekstrem.",
+                explanation: "Radbruch Formula menegaskan bahwa ketika hukum positif sangat bertentangan dengan keadilan, nilai keadilan (Gerechtigkeit) harus diutamakan."
+            },
+            {
+                topic: "Sistem Hukum (Lawrence M. Friedman)",
+                question: "Aturan dan lembaga hukum sudah lengkap, namun suap masih dianggap wajar oleh masyarakat. Dalam teori Friedman, kelemahan terletak pada...",
+                options: [
+                    "Substansi hukum yang kurang mengatur sanksi denda",
+                    "Struktur hukum karena jumlah gedung sidang terbatas",
+                    "Budaya hukum karena sikap masyarakat masih permisif",
+                    "Yurisprudensi hakim yang belum memiliki pedoman"
+                ],
+                correctIndex: 2,
+                hint: "Komponen ini berkaitan dengan sikap, nilai, dan kesadaran masyarakat terhadap hukum.",
+                explanation: "Budaya hukum (Legal Culture) adalah sikap dan nilai masyarakat yang menjadi penggerak utama berjalannya aturan dan lembaga hukum."
+            },
+            {
+                topic: "Konstitusi & Negara Hukum",
+                question: "Makna utama asas Equality Before the Law dalam Pasal 27 Ayat (1) UUD NRI Tahun 1945 adalah...",
+                options: [
+                    "Setiap warga negara memiliki hak imunitas di pengadilan",
+                    "Semua warga negara berkedudukan setara di hadapan hukum",
+                    "Pejabat negara berhak mendapat perlakuan hukum khusus",
+                    "Hukum adat tidak boleh berlaku dalam sistem peradilan"
+                ],
+                correctIndex: 1,
+                hint: "Equality berarti kesetaraan tanpa memandang jabatan atau status sosial.",
+                explanation: "Asas Equality Before the Law menjamin bahwa seluruh warga negara tanpa terkecuali tunduk pada hukum yang sama secara setara."
+            },
+            {
+                topic: "Paradigma Keadilan Restoratif",
+                question: "Penyelesaian tindak pidana ringan melalui perdamaian pelaku dan korban untuk memulihkan hubungan sosial disebut...",
+                options: [
+                    "Keadilan retributif yang berfokus pada pembalasan",
+                    "Keadilan distributif yang membagi hukuman merata",
+                    "Keadilan prosedural yang mengejar formalitas berkas",
+                    "Keadilan restoratif yang memulihkan keadaan semula"
+                ],
+                correctIndex: 3,
+                hint: "Kata kuncinya adalah 'restorasi' atau pemulihan keadaan semula.",
+                explanation: "Restorative Justice menekankan pemulihan kerugian korban dan harmoni sosial, bukan sekadar pembalasan penjara."
+            },
+            {
+                topic: "Lembaga Penegak Hukum",
+                question: "Lembaga penegak hukum yang memegang asas Dominus Litis sebagai pengendali perkara dan penuntut umum adalah...",
+                options: [
+                    "Kepolisian Negara Republik Indonesia",
+                    "Kejaksaan Republik Indonesia",
+                    "Mahkamah Konstitusi Republik Indonesia",
+                    "Komisi Yudisial Republik Indonesia"
+                ],
+                correctIndex: 1,
+                hint: "Lembaga ini bertugas melimpahkan berkas ke pengadilan dan melakukan penuntutan.",
+                explanation: "Kejaksaan RI bertindak sebagai Dominus Litis yang menentukan layak tidaknya perkara dituntut di pengadilan."
+            },
+            {
+                topic: "Peran Advokat",
+                question: "Dalam sistem peradilan pidana, fungsi utama advokat saat mendampingi terdakwa di persidangan adalah...",
+                options: [
+                    "Membebaskan terdakwa dari semua bukti yang sah",
+                    "Menggantikan jaksa dalam membuktikan dakwaan",
+                    "Menjamin perlindungan hak hukum terdakwa secara adil",
+                    "Mengintervensi hakim agar memutus bebas murni"
+                ],
+                correctIndex: 2,
+                hint: "Advokat mengawal prinsip Due Process of Law agar proses hukum berjalan jujur.",
+                explanation: "Advokat berperan menjaga hak konstitusional terdakwa agar tidak terjadi kesewenang-wenangan selama proses peradilan."
+            },
+            {
+                topic: "Problematika Penegakan Hukum",
+                question: "Dampak utama cara pandang positivisme hukum yang terlalu kaku di kalangan aparat penegak hukum adalah...",
+                options: [
+                    "Putusan hakim selalu mengutamakan nurani rakyat kecil",
+                    "Hukum cenderung tajam ke bawah namun tumpul ke atas",
+                    "Kejahatan kerah putih lebih mudah dijerat pidana berat",
+                    "Seluruh sengketa pidana selesai tanpa melalui sidang"
+                ],
+                correctIndex: 1,
+                hint: "Pelanggaran sederhana mudah dijerat teks pasal, sedangkan kasus besar lolos celah prosedur.",
+                explanation: "Positivisme kaku hanya melihat bunyi teks aturan sehingga rakyat kecil mudah dihukum sementara pelaku elit lolos formalitas."
+            },
+            {
+                topic: "Kekuasaan Kehakiman",
+                question: "Lembaga negara yang berwenang menguji kesesuaian suatu Undang-Undang terhadap UUD NRI Tahun 1945 adalah...",
+                options: [
+                    "Mahkamah Agung melalui upaya hukum kasasi",
+                    "Pengadilan Tinggi melalui sidang banding",
+                    "Mahkamah Konstitusi melalui Judicial Review",
+                    "Komisi Pemberantasan Korupsi melalui supervisi"
+                ],
+                correctIndex: 2,
+                hint: "Lembaga ini dibentuk pasca-amandemen UUD 1945 sebagai penjaga konstitusi.",
+                explanation: "Sesuai Pasal 24C UUD 1945, Mahkamah Konstitusi berwenang menguji Undang-Undang terhadap UUD 1945."
+            },
+            {
+                topic: "Asas Hukum Pidana",
+                question: "Penghakiman oleh media massa terhadap tersangka sebelum adanya putusan pengadilan tetap melanggar asas...",
+                options: [
+                    "Praduga tak bersalah (Presumption of Innocence)",
+                    "Legalitas hukum (Nullum Delictum Sine Lege)",
+                    "Kebebasan hakim dalam memutus perkara perdata",
+                    "Keterbukaan informasi publik bagi seluruh warga"
+                ],
+                correctIndex: 0,
+                hint: "Seseorang wajib dianggap tidak bersalah sebelum ada vonis pengadilan yang inkrah.",
+                explanation: "Asas Praduga Tak Bersalah melindungi martabat tersangka sebelum pengadilan menjatuhkan putusan berkekuatan hukum tetap."
+            },
+            {
+                topic: "Pemberantasan Korupsi",
+                question: "Selain pidana penjara, penegakan hukum korupsi yang berkeadilan wajib memprioritaskan langkah...",
+                options: [
+                    "Penghapusan hak banding bagi seluruh terdakwa",
+                    "Pengalihan kasus korupsi menjadi sengketa perdata",
+                    "Pemulihan kerugian keuangan negara secara maksimal",
+                    "Penghentian penyidikan apabila kerugian dicicil"
+                ],
+                correctIndex: 2,
+                hint: "Fokus utamanya adalah mengembalikan uang rakyat yang dikorupsi (Asset Recovery).",
+                explanation: "Asset Recovery atau perampasan aset hasil korupsi penting untuk memulihkan keuangan negara dan memberi efek jera."
+            }
+        ];
+
+        // State Aplikasi
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let currentAttempt = 1;
+        let isQuestionResolved = false;
+        let disabledOptions = [];
+        let stats = { firstTry: 0, secondTry: 0, thirdOrFail: 0 };
+        let questionBreakdown = []; // Menyimpan rincian poin tiap soal untuk laporan email
+
+        // State Peserta & Timer (10 Menit = 600 Detik)
+        let studentInfo = { name: '', nim: '', attemptType: 'Percobaan Pertama' };
+        const TOTAL_TIME_SECONDS = 600;
+        let remainingSeconds = TOTAL_TIME_SECONDS;
+        let timerInterval = null;
+        let isQuizRunning = false;
+
+        // State Mode Admin untuk Hapus Rekap Peserta
+        const ADMIN_DEFAULT_PIN = "1234";
+        let isAdminUnlocked = false;
+        let pendingDeleteAction = null;
+
+        // Inisialisasi saat halaman dimuat
+        window.onload = function() {
+            updateLogBadge();
+            updateAdminUI();
+            renderLogTable();
+            updateHostEmailDisplay();
+        };
+// ... existing code ... -->
+        function renderLogTable() {
+            const logs = JSON.parse(localStorage.getItem('kuis_hukum_logs') || '[]');
+            const tbody = document.getElementById('log-table-body');
+            const colSpanCount = isAdminUnlocked ? 7 : 6;
+
+            if (logs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="${colSpanCount}" class="p-8 text-center text-slate-400">
+                            Belum ada peserta yang menyelesaikan kuis di perangkat ini.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = logs.map((item, idx) => `
+                <tr class="hover:bg-indigo-50/40 transition-colors">
+                    <td class="p-3.5 font-bold text-slate-500">${idx + 1}</td>
+                    <td class="p-3.5">
+                        <div class="font-extrabold text-slate-900">${item.name}</div>
+                        <div class="text-xs text-slate-500">${item.nim}</div>
+                    </td>
+                    <td class="p-3.5">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${item.attemptType === 'Mengulang Kuis' ? 'bg-amber-100 text-amber-800' : 'bg-indigo-100 text-indigo-800'}">
+                            ${item.attemptType}
+                        </span>
+                    </td>
+                    <td class="p-3.5">
+                        <span class="font-extrabold text-sm ${item.score === 100 ? 'text-emerald-600' : 'text-indigo-900'}">
+                            ${item.score} / 100 ${item.score === 100 ? '🏆' : ''}
+                        </span>
+                    </td>
+                    <td class="p-3.5 font-mono text-xs text-slate-600">${item.duration}</td>
+                    <td class="p-3.5 text-xs text-slate-500">${item.timestamp}</td>
+                    ${isAdminUnlocked ? `
+                        <td class="p-3.5 text-center">
+                            <button onclick="promptDeleteSingleLog(${idx})" title="Hapus data peserta ini" class="bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 px-3 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1 cursor-pointer">
+                                <i class="fa-solid fa-trash-can"></i>
+                                <span>Hapus</span>
+                            </button>
+                        </td>
+                    ` : ''}
+                </tr>
+            `).join('');
+        }
+
+        function exportAllLogsToEmail() {
+            const logs = JSON.parse(localStorage.getItem('kuis_hukum_logs') || '[]');
+            if (logs.length === 0) return;
+
+            let targetEmail = localStorage.getItem('kuis_hukum_host_email') || '';
+            if (!targetEmail) {
+                openEmailModal();
+                return;
+            }
+
+            const lines = logs.map((l, i) =>
+                `${i + 1}. ${l.name} (${l.nim}) | ${l.attemptType} | Skor: ${l.score}/100 | Durasi: ${l.duration} | ${l.timestamp}`
+            ).join('\n');
+
+            const subject = encodeURIComponent(`[Rekap Lengkap Kuis Hukum] Total ${logs.length} Peserta`);
+            const body = encodeURIComponent(`REKAP DATA PESERTA KUIS PENEGAKAN HUKUM BERKEADILAN\n====================================================\n\n${lines}`);
+            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+        }
+
+        // ==========================================
+        // MANAJEMEN AKSES ADMIN & PENGHAPUSAN REKAP
+        // ==========================================
+        function toggleAdminMode() {
+            if (isAdminUnlocked) {
+                isAdminUnlocked = false;
+                updateAdminUI();
+                renderLogTable();
+            } else {
+                document.getElementById('admin-pin-input').value = '';
+                document.getElementById('admin-pin-error').classList.add('hidden');
+                document.getElementById('admin-pin-modal').classList.remove('hidden');
+                setTimeout(() => document.getElementById('admin-pin-input').focus(), 100);
+            }
+        }
+
+        function closeAdminPinModal() {
+            document.getElementById('admin-pin-modal').classList.add('hidden');
+        }
+
+        function verifyAdminPin() {
+            const enteredPin = document.getElementById('admin-pin-input').value.trim();
+            if (enteredPin === ADMIN_DEFAULT_PIN) {
+                isAdminUnlocked = true;
+                closeAdminPinModal();
+                updateAdminUI();
+                renderLogTable();
+            } else {
+                document.getElementById('admin-pin-error').classList.remove('hidden');
+            }
+        }
+
+        function updateAdminUI() {
+            const statusBadge = document.getElementById('admin-status-badge');
+            const toggleBtn = document.getElementById('admin-toggle-btn');
+            const deleteAllBtn = document.getElementById('delete-all-btn');
+            const actionHeader = document.getElementById('log-action-header');
+
+            if (isAdminUnlocked) {
+                statusBadge.className = "bg-emerald-100 text-emerald-800 border border-emerald-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full";
+                statusBadge.innerHTML = `<i class="fa-solid fa-lock-open mr-1"></i> Mode Admin Aktif`;
+
+                toggleBtn.className = "bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer";
+                toggleBtn.innerHTML = `<i class="fa-solid fa-lock"></i><span>Kunci Mode Admin</span>`;
+
+                deleteAllBtn.classList.remove('hidden');
+                actionHeader.classList.remove('hidden');
+            } else {
+                statusBadge.className = "bg-slate-100 text-slate-600 border border-slate-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full";
+                statusBadge.innerHTML = `<i class="fa-solid fa-lock mr-1"></i> Mode Lihat`;
+
+                toggleBtn.className = "bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-bold px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer";
+                toggleBtn.innerHTML = `<i class="fa-solid fa-lock"></i><span>Buka Akses Hapus (Admin)</span>`;
+
+                deleteAllBtn.classList.add('hidden');
+                actionHeader.classList.add('hidden');
+            }
+        }
+
+        function promptDeleteSingleLog(index) {
+            const logs = JSON.parse(localStorage.getItem('kuis_hukum_logs') || '[]');
+            const target = logs[index];
+            if (!target) return;
+
+            document.getElementById('delete-modal-title').textContent = "Hapus Data Peserta?";
+            document.getElementById('delete-modal-desc').innerHTML = `Yakin ingin menghapus riwayat pengerjaan atas nama <strong>${target.name} (${target.nim})</strong>?`;
+
+            const confirmBtn = document.getElementById('confirm-delete-btn');
+            confirmBtn.onclick = function() {
+                logs.splice(index, 1);
+                localStorage.setItem('kuis_hukum_logs', JSON.stringify(logs));
+                updateLogBadge();
+                renderLogTable();
+                closeDeleteModal();
+            };
+
+            document.getElementById('delete-confirm-modal').classList.remove('hidden');
+        }
+
+        function promptDeleteAllLogs() {
+            const logs = JSON.parse(localStorage.getItem('kuis_hukum_logs') || '[]');
+            if (logs.length === 0) return;
+
+            document.getElementById('delete-modal-title').textContent = "Hapus Semua Rekap?";
+            document.getElementById('delete-modal-desc').textContent = `Yakin ingin menghapus semua data rekap peserta (${logs.length} data)? Tindakan ini tidak dapat dibatalkan.`;
+
+            const confirmBtn = document.getElementById('confirm-delete-btn');
+            confirmBtn.onclick = function() {
+                localStorage.removeItem('kuis_hukum_logs');
+                updateLogBadge();
+                renderLogTable();
+                closeDeleteModal();
+            };
+
+            document.getElementById('delete-confirm-modal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('delete-confirm-modal').classList.add('hidden');
+        }
+
+        function restartQuiz() {
+            clearInterval(timerInterval);
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('quiz-active-screen').classList.add('hidden');
+            document.getElementById('quiz-start-screen').classList.remove('hidden');
+
+            // Otomatis pilih radio "Mengulang Kuis" agar terdata kalau mengulang
+            const repeatRadio = document.querySelector('input[name="attemptType"][value="Mengulang Kuis"]');
+            if (repeatRadio) repeatRadio.checked = true;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
